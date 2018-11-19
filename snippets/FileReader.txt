@@ -1,0 +1,39 @@
+package ExceptionsFiles;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class PhoneNumberApp {
+
+	public static void main(String[] args) {
+		// This will read a text file and will retrieve phone number
+		// Valid phone number: 
+			// 10 digits long
+			// Area Code cannot start in 0 or 9
+			// There can be no 911 substring in the number
+		
+		String filename = "C:\\Users\\EatLocal\\Google Drive\\Education\\JAVA\\files\\PhoneNumbers.txt";
+		File file = new File(filename);
+		String phoneNum = null;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			phoneNum = br.readLine();
+			br.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("ERROR: File not found");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("ERROR: Could not read file");
+			e.printStackTrace();
+		}
+		
+		System.out.println(phoneNum);
+		
+
+	}
+
+}
